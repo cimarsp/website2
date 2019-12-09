@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FORMULARIO</title>
+</head>
+<body>
+
+    <h1 id="presenta_saludo"</h1>
+
+    <p>Registro de entrada</p>
+    <form id="mi_formulario">
+        <p>Nombre <input id="nombre" placeholder="Maria"></p>
+        <p>Apellido <input id="apellido" placeholder="Lopez"></p>
+    </form>
+    <button onclick="saludo()">Iniciar sesion</button>
+
+    <script>
+
+        // Se valida el nombre con una funcion y usando TRY CATCH
+        function nombre_valido(){
+            try{
+                if(document.getElementById("nombre").value == ""){
+                    throw "VACIO";
+                }
+            }catch(e){
+                if(e=="VACIO"){
+                    document.getElementById("nombre").style.borderWidth = "medium";
+                    document.getElementById("nombre").style.borderColor = "red";
+                    alert("Es necesario que introduzca su nombre");
+                    document.getElementById("nombre").focus();
+                }
+                return false;
+            }
+            document.getElementById("nombre").style.borderWidth = "";
+            document.getElementById("nombre").style.borderColor = "";
+            return true;
+        }
+
+
+        function saludo(){
+        
+            if(nombre_valido()){
+                document.getElementById("presenta_saludo").innerHTML = "Bienvenid@ " + document.getElementById("nombre").value;
+            }
+
+        }
+
+    </script>
+</body>
+</html>
